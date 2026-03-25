@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miguel Santos | Tech Lead & Problem Solver</title>
+    <title>Miguel Santos | Problem Solver</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap');
         
         body {
-            font-family: 'Inter', system_ui, sans-serif;
+            font-family: 'Inter', system-ui, sans-serif;
+            scroll-behavior: smooth;
         }
         .heading-font {
-            font-family: 'Playfair Display', sans-serif;
+            font-family: 'Playfair Display', serif;
         }
         .hero-bg {
             background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
         }
         .accent-teal {
             color: #14b8a6;
+        }
+        .section-title {
+            position: relative;
         }
         .section-title:after {
             content: '';
@@ -28,7 +32,8 @@
             height: 3px;
             background: #14b8a6;
             bottom: -8px;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
         }
         .timeline-item:before {
             content: '';
@@ -56,281 +61,249 @@
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 20px 25px -5px rgb(45 212 191 / 0.3);
         }
+
+        /* PRINT OPTIMIZATION */
+        @media print {
+            nav, .download-btn, header a, footer { display: none !important; }
+            body { background: white !important; color: black !important; }
+            .hero-bg, .bg-zinc-900, .bg-zinc-950, .bg-zinc-800 { background: white !important; color: black !important; border: 1px solid #eee; }
+            .text-zinc-400, .text-zinc-300, .accent-teal { color: #444 !important; }
+            .text-white { color: black !important; }
+            .section-title:after { left: 0; transform: none; }
+            .timeline-dot { border-color: #000 !important; }
+            .grid { display: block !important; }
+            .md\:col-span-7, .md\:col-span-5 { width: 100% !important; }
+            section { padding: 20px 0 !important; page-break-inside: avoid; }
+        }
     </style>
 </head>
 <body class="bg-zinc-950 text-zinc-200">
 
-    <!-- NAVBAR -->
-    <nav class="bg-zinc-900 shadow-sm sticky top-0 z-50 border-b border-zinc-800">
-        <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+    <nav class="bg-zinc-900/80 backdrop-blur-md sticky top-0 z-50 border-b border-zinc-800">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="w-9 h-9 bg-teal-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">MS</div>
-                <span class="text-2xl font-semibold tracking-tight text-white">Miguel Santos</span>
+                <div class="w-9 h-9 bg-teal-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">MS</div>
+                <span class="text-xl font-semibold tracking-tight text-white">Miguel Santos</span>
             </div>
             
             <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="#about" class="nav-link">About</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#about" class="nav-link transition-all">About</a>
+                <a href="#experience" class="nav-link transition-all">Experience</a>
+                <a href="#skills" class="nav-link transition-all">Skills</a>
+                <a href="#contact" class="nav-link transition-all">Contact</a>
             </div>
-
-           
         </div>
     </nav>
 
-    <!-- HERO -->
     <header class="hero-bg text-white py-24">
         <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-12 gap-12 items-center">
             <div class="md:col-span-7">
-                <h1 class="text-6xl md:text-7xl font-bold heading-font leading-tight mb-4">
+                <h1 class="text-5xl md:text-7xl font-bold heading-font leading-tight mb-4">
                     Miguel Santos
                 </h1>
-                <p class="text-3xl text-zinc-400 mb-6">
-                    Tech Lead &amp; Problem Solver
+                <p class="text-2xl md:text-3xl text-teal-400 font-light mb-6">
+                    Problem Solver & Tech Strategist
                 </p>
-                <p class="text-xl text-zinc-300 max-w-lg">
-                    Experienced Android developer turned technology leader. Passionate about building scalable mobile solutions and high-throughput IoT platforms that deliver measurable business impact.
+                <p class="text-xl text-zinc-300 max-w-lg leading-relaxed">
+                    Bridging the gap between complex engineering and business growth. Specialized in high-throughput IoT architectures, mobile-first strategies, and building high-performance engineering cultures.
                 </p>
                 
                 <div class="flex flex-wrap gap-4 mt-10">
-                    <a href="#contact" class="inline-flex items-center gap-3 bg-white text-zinc-900 hover:bg-zinc-100 px-8 py-4 rounded-3xl font-semibold transition-all">
-                        <i class="fas fa-paper-plane"></i>
-                        Get in touch
+                    <a href="mailto:mig.az.santos@gmail.com" class="inline-flex items-center gap-3 bg-white text-zinc-900 hover:bg-zinc-100 px-8 py-4 rounded-full font-semibold transition-all">
+                        <i class="fas fa-envelope"></i>
+                        Contact Me
                     </a>
-                    <a href="#experience" class="inline-flex items-center gap-3 border-2 border-zinc-400 hover:bg-white/10 px-8 py-4 rounded-3xl font-semibold transition-all">
-                        View my journey
+                    <a href="#experience" class="inline-flex items-center gap-3 border-2 border-zinc-600 hover:border-teal-400 px-8 py-4 rounded-full font-semibold transition-all">
+                        View Experience
                     </a>
                 </div>
             </div>
             
             <div class="md:col-span-5 flex justify-center">
-                <div class="w-80 h-80 bg-zinc-800/50 backdrop-blur-xl rounded-3xl p-3 shadow-2xl">
-                    <img src="prof_photo.jpeg" 
-                         alt="Miguel Santos" 
-                         class="w-full h-full object-cover rounded-3xl">
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-teal-600 to-blue-600 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                    <div class="relative w-72 h-72 md:w-80 md:h-80 bg-zinc-800 rounded-3xl p-2 shadow-2xl">
+                        <img src="prof_photo.jpeg" alt="Miguel Santos" class="w-full h-full object-cover rounded-2xl">
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- ABOUT -->
-    <section id="about" class="py-20 bg-zinc-900">
+    <section id="about" class="py-24 bg-zinc-900">
         <div class="max-w-6xl mx-auto px-6">
             <div class="max-w-3xl mx-auto text-center">
-                <h2 class="section-title text-4xl font-semibold mb-8 inline-block text-white">About Me</h2>
-                <p class="text-lg text-zinc-400 leading-relaxed">
-                    Results-driven technology professional with over 10 years of experience spanning Android development, agile delivery, and technical leadership. 
-                    Currently serving as CTO at Octopustalent, where I architect scalable IoT solutions and advise clients on strategic IT transformations.
-                </p>
+                <h2 class="section-title text-4xl font-semibold mb-12 inline-block text-white">Executive Summary</h2>
                 <p class="text-lg text-zinc-400 leading-relaxed mt-6">
-                    I thrive on turning complex challenges into efficient, high-impact systems — from delivering chart-topping mobile apps to building cloud platforms that process millions of data points.
+                    With over a decade of technical evolution—from Android development at global scale to architectural leadership—I focus on creating <strong>measurable business value</strong> through technology. My approach combines deep-stack technical proficiency with the agile mindset required to lead modern engineering organizations.
                 </p>
                 
-                <div class="mt-12 bg-zinc-800 rounded-3xl p-8 text-left">
+                <div class="mt-16 bg-zinc-800/50 border border-zinc-700 rounded-3xl p-8 text-left">
                     <h3 class="text-xl font-semibold mb-6 text-white flex items-center gap-3">
-                        <i class="fas fa-heart accent-teal"></i> 
-                        Outside of Tech
+                        <i class="fas fa-hammer accent-teal"></i> 
+                        Hands-on Leadership
                     </h3>
-                    <div class="grid md:grid-cols-2 gap-6 text-zinc-400 text-[15px] leading-relaxed">
-                        <div>
-                            • Regular practitioner of <span class="text-teal-400">Brazilian Jiu-Jitsu</span><br>
-                            • Passionate about <span class="text-teal-400">spearfishing</span><br>
-                            • Built a traditional Finnish sauna from scratch
-                        </div>
-                        <div>
-                            • Former kayaking coach at <span class="text-teal-400">Clube Náutico de Fão</span> — Portugal’s largest kayaking club<br>
-                            • Led athletes to national titles and important personal growth<br>
-                            • Enjoy hands-on projects including carpentry and home improvements
-                        </div>
+                    <div class="grid md:grid-cols-2 gap-8 text-zinc-400 text-[15px]">
+                        <ul class="space-y-3">
+                            <li><strong class="text-zinc-200">Martial Arts:</strong> Brazilian Jiu-Jitsu practitioner (focus, discipline, strategy and also a rebel).</li>
+                            <li><strong class="text-zinc-200">Craftsmanship:</strong> Built a traditional Finnish sauna from scratch; I love all related to carpentry and hands-on.</li>
+                        </ul>
+                        <ul class="space-y-3">
+                            <li><strong class="text-zinc-200">Leadership:</strong> Former Kayaking Coach at Clube Náutico de Fão; mentored hobbyists and national champions. Proud of helping kids personal growth</li>
+                            <li><strong class="text-zinc-200">Exploration:</strong> Passionate about spearfishing, apnea and the sea.</li>
+                        </ul>
                     </div>
-                </div>
-
-                <div class="mt-12 flex flex-wrap justify-center gap-8 text-sm">
-                    <div class="flex items-center gap-2"><i class="fas fa-flag accent-teal"></i> Based in Portugal</div>
-                    <div class="flex items-center gap-2"><i class="fas fa-language accent-teal"></i> Portuguese (Native) • English (Professional) • Spanish (Elementary)</div>
-                    <div class="flex items-center gap-2"><i class="fas fa-certificate accent-teal"></i> Professional Scrum Master I (2018)</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" class="py-20 bg-zinc-950">
+    <section id="experience" class="py-24 bg-zinc-950">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="section-title text-4xl font-semibold mb-12 text-center text-white">Professional Experience</h2>
+            <h2 class="section-title text-4xl font-semibold mb-16 text-center text-white">Professional Journey</h2>
             
             <div class="max-w-4xl mx-auto space-y-16">
                 
-                <!-- CTO Octopustalent -->
                 <div class="timeline-item pl-12 relative">
                     <div class="timeline-dot"></div>
                     <div class="flex flex-col md:flex-row md:items-center gap-4 mb-4">
                         <div>
-                            <h3 class="text-2xl font-semibold">CTO</h3>
+                            <h3 class="text-2xl font-bold text-white">Associate and Technical Lead</h3>
                             <div class="accent-teal font-medium">Octopustalent</div>
                         </div>
-                        <div class="md:ml-auto text-zinc-500 text-sm font-medium">2021 — Present • Portugal</div>
+                        <div class="md:ml-auto text-zinc-500 text-sm font-semibold bg-zinc-900 px-3 py-1 rounded-full border border-zinc-800">2021 — PRESENT</div>
                     </div>
-                    <ul class="list-disc list-outside ml-6 space-y-3 text-zinc-400">
-                        <li>Lead the architecture and development of e+Monitor, a scalable cloud-based IoT energy & resource monitoring platform processing millions of data points daily.</li>
-                        <li>Provide strategic IT consulting to clients — advising on optimal technology approaches, designing solutions, and implementing end-to-end systems.</li>
-                        <li>Take multiple hands-on roles including setting up services on client infrastructure, configuring IoT gateways, integrating industrial protocols, and delivering tailored high-performance solutions using Oracle, Kafka, Docker, PostgreSQL, and PL/SQL.</li>
-                        <li>Drive technical strategy and transformation projects that increase operational efficiency and deliver measurable business value.</li>
+                    <ul class="list-disc list-outside ml-6 space-y-4 text-zinc-400">
+                        <li>Developed <span class="text-zinc-200">e+Monitor</span>, an enterprise IoT platform processing millions of telemetry points via Oracle, Kafka, and Docker, front end built in Oracle APEX.</li>
+                        <li>Liaised with stakeholders to gather requirements and drive the technical implementation of new features.</li>
+                        <li>Trained and mentored junior developers, fostering a collaborative and knowledge-sharing environment.</li>
+                        <li>Implemented industrial protocol integrations (Modbus, MQTT, SFTP, HTTP) to bridge hardware-to-cloud data gaps.</li>
+                        <li>Optimized backend performance using PL/SQL and PostgreSQL to handle real-time resource benchmarking.</li>
                     </ul>
-                    <a href="https://octopustalent.pt/" target="_blank" class="ml-6 mt-4 inline-flex items-center gap-2 text-teal-400 text-sm hover:underline">
-                        <i class="fas fa-external-link-alt"></i> Visit Octopustalent
-                    </a>
                 </div>
 
-                <!-- Costa Coffee -->
                 <div class="timeline-item pl-12 relative">
                     <div class="timeline-dot"></div>
                     <div class="flex flex-col md:flex-row md:items-center gap-4 mb-4">
                         <div>
-                            <h3 class="text-2xl font-semibold">Agile Delivery Manager / Scrum Master</h3>
+                            <h3 class="text-2xl font-bold text-white">Agile Delivery Manager</h3>
                             <div class="accent-teal font-medium">Costa Coffee</div>
                         </div>
-                        <div class="md:ml-auto text-zinc-500 text-sm font-medium">2019 — 2021 • London, UK / Portugal</div>
+                        <div class="md:ml-auto text-zinc-500 text-sm font-semibold bg-zinc-900 px-3 py-1 rounded-full border border-zinc-800">2019 — 2021</div>
                     </div>
-                    <ul class="list-disc list-outside ml-6 space-y-3 text-zinc-400">
-                        <li>Built and line-managed a high-performing team of 7 developers, 2 QAs, and 1 designer.</li>
-                        <li>Led the Costa Coffee iOS & Android apps to <strong>#1 ranking in the UK App Store</strong>, significantly increasing mobile orders and revenue.</li>
-                        <li>Established a sustainable monthly release cadence while meeting the high expectations of ambitious business leadership.</li>
-                        <li>Effectively managed multiple stakeholders, aligning expectations and ensuring smooth delivery of key features such as Google Pay integration.</li>
+                    <ul class="list-disc list-outside ml-6 space-y-4 text-zinc-400">
+                        <li>Directed a cross-functional squad of 10+ to achieve the <span class="text-zinc-200">#1 UK App Store</span> mobile application.</li>
+                        <li>Championed the transition to a sustainable DevOps culture, reducing release cycles from quarterly to monthly.</li>
+                        <li>Managed stakeholders across the Costa Coffee ecosystem to integrate complex payment gateways (Google Pay), extended the loyalty club to the Costa Express machines, matured the click and collect experience.</li>
+                        <li>Responsible and accountable for both iOS, Android and coffee shops Click and Collect app.</li>
                     </ul>
                 </div>
 
-                <!-- Premier Inn -->
                 <div class="timeline-item pl-12 relative">
                     <div class="timeline-dot"></div>
                     <div class="flex flex-col md:flex-row md:items-center gap-4 mb-4">
                         <div>
-                            <h3 class="text-2xl font-semibold">Android Developer</h3>
+                            <h3 class="text-2xl font-bold text-white">Android Developer</h3>
                             <div class="accent-teal font-medium">Whitbread • Premier Inn</div>
                         </div>
-                        <div class="md:ml-auto text-zinc-500 text-sm font-medium">2016 — 2019 • London, UK</div>
+                        <div class="md:ml-auto text-zinc-500 text-sm font-semibold bg-zinc-900 px-3 py-1 rounded-full border border-zinc-800">2016 — 2019</div>
                     </div>
-                    <ul class="list-disc list-outside ml-6 space-y-3 text-zinc-400">
-                        <li>Developed and maintained the official Premier Inn Android application used by millions of guests worldwide.</li>
-                        <li>Implemented real-time booking, loyalty integration, and secure in-app payments.</li>
-                        <li>Optimized app performance and migrated components to modern Android architecture (MVVM, Clean Architecture).</li>
+                    <ul class="list-disc list-outside ml-6 space-y-4 text-zinc-400">
+                        <li>Developed features for a high-traffic booking engine used by millions, focusing on UI performance and secure payment flows.</li>
+                        <li>Pioneered the migration from Java to Kotlin and implemented MVP and MVVM architecture to reduce technical debt.</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="py-20 bg-zinc-900">
+    <section id="skills" class="py-24 bg-zinc-900">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="section-title text-4xl font-semibold mb-12 text-center text-white">Notable Projects</h2>
-            
-            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <div class="bg-zinc-800 p-8 rounded-3xl">
-                    <h3 class="font-semibold text-xl mb-2">e+Monitor – IoT Energy & Resource Monitoring Platform</h3>
-                    <p class="accent-teal text-sm mb-4">Octopustalent (2021 – Present)</p>
-                    <p class="text-zinc-400 text-sm">
-                        Cloud-based remote monitoring system for energy consumption, water, pressure, temperature and other parameters. 
-                        Features real-time dashboards, trend analysis, alarms, benchmarking, virtual channels, tariff-based cost allocation, and invoice validation — helping organizations optimize usage and detect billing errors.
-                    </p>
-                    <a href="https://www.ewen-emonitor.com/pt" target="_blank" class="mt-6 inline-flex items-center gap-2 text-teal-400 text-sm hover:underline">
-                        <i class="fas fa-external-link-alt"></i> View e+Monitor
-                    </a>
+            <h2 class="section-title text-4xl font-semibold mb-16 text-center text-white">Core Expertise</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-zinc-950 p-8 rounded-3xl border border-zinc-800">
+                    <i class="fas fa-chess-knight text-3xl text-amber-500 mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4 text-white">Strategic Leadership</h3>
+                    <ul class="space-y-2 text-zinc-400 text-sm">
+                        <li>• Technical Advisory</li>
+                        <li>• Stakeholder Management</li>
+                        <li>• Agile / Scrum Mastery (PSM I)</li>
+                        <li>• Team Building & Mentorship</li>
+                    </ul>
                 </div>
-
-                <div class="bg-zinc-800 p-8 rounded-3xl">
-                    <h3 class="font-semibold text-xl mb-2">Smart Mobile Expense Manager (SMEM)</h3>
-                    <p class="accent-teal text-sm mb-4">PROMAND 2014 • Android Application</p>
-                    <ul class="text-zinc-400 text-sm space-y-2">
-                        <li>Full-featured expense tracking app with receipt photo capture, category/project filtering, and visual analytics (lists + bar graphs)</li>
-                        <li>Developed as part of an intensive international Android enterprise development programme</li>
+                <div class="bg-zinc-950 p-8 rounded-3xl border border-zinc-800">
+                    <i class="fas fa-microchip text-3xl text-teal-500 mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4 text-white">Backend & IoT</h3>
+                    <ul class="space-y-2 text-zinc-400 text-sm">
+                        <li>• Oracle Cloud (OCI) & APEX</li>
+                        <li>• Kafka & Data Streaming</li>
+                        <li>• Docker & Containerization</li>
+                        <li>• Industrial Protocols (Modbus)</li>
+                    </ul>
+                </div>
+                <div class="bg-zinc-950 p-8 rounded-3xl border border-zinc-800">
+                    <i class="fab fa-android text-3xl text-emerald-500 mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4 text-white">Mobile Engineering</h3>
+                    <ul class="space-y-2 text-zinc-400 text-sm">
+                        <li>• Kotlin / Java / Jetpack</li>
+                        <li>• Clean Architecture / MVVM</li>
+                        <li>• API Design & Integration</li>
+                        <li>• App Store Optimization (ASO)</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="py-20 bg-zinc-950">
+    <footer id="contact" class="bg-black py-24 border-t border-zinc-800">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="section-title text-4xl font-semibold mb-12 text-center text-white">Skills & Expertise</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-zinc-900 p-8 rounded-3xl">
-                    <h3 class="text-xl font-semibold mb-6 flex items-center gap-3"><i class="fas fa-users text-amber-400"></i> Leadership & Agile</h3>
-                    <div class="space-y-4 text-zinc-400">
-                        <div>Team Building & Line Management</div>
-                        <div>Stakeholder Management</div>
-                        <div>Professional Scrum Master I</div>
-                        <div>Technical Strategy & Consulting</div>
-                    </div>
-                </div>
-                <div class="bg-zinc-900 p-8 rounded-3xl">
-                    <h3 class="text-xl font-semibold mb-6 flex items-center gap-3"><i class="fas fa-server text-teal-400"></i> Backend & IoT</h3>
-                    <div class="space-y-4 text-zinc-400">
-                        <div>Oracle • Oracle APEX • OCI • PL/SQL</div>
-                        <div>Kafka • Docker • PostgreSQL</div>
-                        <div>IoT Gateways & Industrial Protocols</div>
-                    </div>
-                </div>
-                <div class="bg-zinc-900 p-8 rounded-3xl">
-                    <h3 class="text-xl font-semibold mb-6 flex items-center gap-3"><i class="fab fa-android text-emerald-400"></i> Mobile Development</h3>
-                    <div class="space-y-4 text-zinc-400">
-                        <div>Kotlin & Java • Android SDK • Jetpack</div>
-                        <div>MVVM • REST APIs • Google Pay</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <footer id="contact" class="bg-black py-20 border-t border-zinc-800">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-4xl font-semibold heading-font mb-6 text-white">Let's connect</h2>
-                    <p class="text-zinc-400">Open to senior Android, IoT architecture, technical leadership, or consulting opportunities.</p>
+                    <h2 class="text-4xl font-bold heading-font mb-6 text-white">Let's Connect</h2>
+                    <p class="text-zinc-400 mb-10 text-lg">Currently available for strategic consulting, technical leadership roles, or exploring high-impact IoT and Mobile projects.</p>
                     
-                    <div class="mt-10 space-y-6">
-                        <a href="https://www.linkedin.com/in/migsantos/" target="_blank" class="flex items-center gap-4 hover:text-teal-400 transition-colors">
-                            <i class="fab fa-linkedin text-2xl w-8"></i>
-                            <div>linkedin.com/in/migsantos</div>
+                    <div class="space-y-6">
+                        <a href="https://www.linkedin.com/in/migsantos/" target="_blank" class="flex items-center gap-4 hover:text-teal-400 transition-colors group">
+                            <div class="w-12 h-12 bg-zinc-900 rounded-full flex items-center justify-center group-hover:bg-teal-600/20">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </div>
+                            <span class="font-medium text-zinc-300">linkedin.com/in/migsantos</span>
                         </a>
-                        <div class="flex items-center gap-4">
-                            <i class="fas fa-envelope text-2xl w-8"></i>
-                            <div>miguel.santos@email.com</div>
-                        </div>
+                        <a href="mailto:mig.az.santos@gmail.com" class="flex items-center gap-4 hover:text-teal-400 transition-colors group">
+                            <div class="w-12 h-12 bg-zinc-900 rounded-full flex items-center justify-center group-hover:bg-teal-600/20">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <span class="font-medium text-zinc-300">mig.az.santos@gmail.com</span>
+                        </a>
                     </div>
                 </div>
                 
-                <div class="text-right">
-                    <button onclick="downloadCV()" 
-                            class="download-btn w-full md:w-auto bg-teal-600 hover:bg-teal-500 text-white px-10 py-5 rounded-3xl font-semibold flex items-center justify-center gap-3 mx-auto md:ml-auto">
-                        <i class="fas fa-download"></i>
-                        Download Full CV (PDF)
+                <div class="flex flex-col items-center justify-center p-8 bg-zinc-900 rounded-3xl border border-zinc-800">
+                    <button onclick="window.print()" class="download-btn w-full bg-teal-600 hover:bg-teal-500 text-white px-10 py-5 rounded-2xl font-bold flex items-center justify-center gap-3 transition-all">
+                        <i class="fas fa-file-pdf"></i>
+                        Save CV as PDF
                     </button>
+                    <p class="mt-4 text-zinc-500 text-xs">Tip: Click "Save as PDF" in the print dialog for a clean document.</p>
                 </div>
             </div>
             
-            <div class="border-t border-zinc-800 mt-16 pt-8 text-center text-zinc-500 text-sm">
+            <div class="border-t border-zinc-800 mt-20 pt-8 text-center text-zinc-500 text-sm">
                 © 2026 Miguel Santos • Portugal
             </div>
         </div>
     </footer>
 
     <script>
-        function downloadCV() {
-            alert("In a real deployment this would download your PDF CV.\n\nQuick tip: Press Ctrl+P (Cmd+P on Mac) and choose 'Save as PDF' for a clean printable version.");
-        }
-
-        // Smooth scrolling
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                if (this.getAttribute('href') !== '#') {
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#') {
                     e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
                 }
             });
         });
